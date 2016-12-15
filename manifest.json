@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "Open Tabs in Background",
+  "description": "This extension forces all tabs to open in background",
+  "version": "1.0",
+  "icons": {
+    "128": "icon-64.png"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "permissions": [
+    "tabs"
+  ]
+}
