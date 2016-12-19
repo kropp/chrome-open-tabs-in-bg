@@ -5,7 +5,7 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
 });
 
 chrome.tabs.onCreated.addListener(function (tab) {
-    if (tab.url != "chrome://newtab/" && tab.openerTabId && tab.active) {
+    if (!tab.url.startsWith("chrome://") && !tab.url.startsWith("view-source:") && tab.openerTabId && tab.active) {
         chrome.tabs.update(tab.openerTabId, {active: true}, function () {
             lastOpenedTabId = tab.id;
         });
