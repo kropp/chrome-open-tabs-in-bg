@@ -12,11 +12,13 @@ const blacklist = [
 
 chrome.tabs.onCreated.addListener(function (tab) {
     if (tab.openerTabId && tab.active) {
-        var excluded = false;
-        for (var i in blacklist) {
-            if (blacklist.hasOwnProperty(i)) {
-                if (tab.url.startsWith(blacklist[i])) {
-                    excluded = true;
+        var excluded = tab.url == "";
+	if (!excluded) {
+            for (var i in blacklist) {
+                if (blacklist.hasOwnProperty(i)) {
+                    if (tab.url.startsWith(blacklist[i])) {
+                        excluded = true;
+                    }
                 }
             }
         }
